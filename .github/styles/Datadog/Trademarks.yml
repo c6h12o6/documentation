@@ -1,0 +1,12 @@
+extends: existence
+message: 'Missing ™ on phrase'
+link: https://www.datadoghq.com
+ignorecase: true
+level: error
+nonword: true
+
+tokens:
+  - 'Logging without Limits(?!\s*\™)'
+  - 'Traces without Limits(?!\s*\™)'
+  - 'Metrics without Limits(?!\s*\™)'
+  - 'Log Rehydration(?!\s*\™)'
