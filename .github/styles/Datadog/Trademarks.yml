@@ -5,8 +5,9 @@ ignorecase: true
 level: error
 nonword: true
 
+# phrases that don't end with tm or \* should be fixed
 tokens:
-  - 'Logging without Limits(?!\s*\™)'
-  - 'Traces without Limits(?!\s*\™)'
-  - 'Metrics without Limits(?!\s*\™)'
-  - 'Log Rehydration(?!\s*\™)'
+  - 'Logging without Limits(?!\s*(\™|\\\*))'
+  - 'Traces without Limits(?!\s*(\™|\\\*))'
+  - 'Metrics without Limits(?!\s*(\™|\\\*))'
+  - 'Log Rehydration(?!\s*(\™|\\\*))'
