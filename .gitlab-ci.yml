@@ -171,13 +171,8 @@ missing_tms_preview:
   dependencies:
     - build_preview
   script:
-    - rm -rf ./fr ./ja ./public/api/v1/ ./public/api/v2/
-    # run checker and if it fails slack notify user
-    - |-
-      user="${CI_COMMIT_REF_NAME%%/*}"
-      channel="@${user}"
-      text=":weary: \`${CI_JOB_NAME}\` step failed for \`${CI_COMMIT_REF_NAME}\`.\n Details ${CI_PROJECT_URL}/pipelines/${CI_PIPELINE_ID}\nSite: ${PREVIEW_DOMAIN}${CI_COMMIT_REF_NAME}/"
-      vale --glob='*.{html}' ./public || curl -X POST --data-urlencode "payload={\"text\": \"${text}\", \"channel\": \"${channel}\", \"link_names\": 1}" $(get_secret 'slack_url')
+    - rm -rf ./public/fr ./public/ja ./public/api/v1/ ./public/api/v2/
+    - vale --glob='*.{html}' ./public
   only:
     - /.+?\/[a-zA-Z0-9_-]+/
   interruptible: true
